@@ -1,11 +1,11 @@
 '''
-Class: 44-141 Computer Programming I
+Class: 44382-01 Secure Programming
 
 Author: Derek Volner
 
-Description: project for encrypting a file input by user then decrypting the file to a different output file
+Description: project for adding security measures to basic encryption and decryption project from computer programming 1
 
-Due: 4/21/2022
+Due: 12/1/2023
 
 I pledge that I have completed the programming assignment independently.
 
@@ -20,6 +20,7 @@ def encrypt():
     fileNameValidator(users_file)
     base_file=open(users_file, "r")
     users_file_encryption=input("Enter output file:")
+    fileNameValidator(users_file_encryption)
     Encrypted_file=open(users_file_encryption,"w")
     read=[]
     rest=[]
@@ -44,6 +45,7 @@ def decrypt():
     fileNameValidator(encrypted)
     altered_file=open(encrypted, "r")
     decrypted=input("Enter output file:")
+    fileNameValidator(decrypted)
     decrypted_file=open(decrypted,"w")
     encrypted_list=[]
     decryptinglist=[]
