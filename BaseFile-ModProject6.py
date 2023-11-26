@@ -17,6 +17,7 @@ with anyone under any circumstances. '''
 #Functions
 def encrypt():
     users_file=input("Enter file to encrypt:")
+    fileNameValidator(users_file)
     base_file=open(users_file, "r")
     users_file_encryption=input("Enter output file:")
     Encrypted_file=open(users_file_encryption,"w")
@@ -40,6 +41,7 @@ def encrypt():
 
 def decrypt():
     encrypted=input("Enter file to decrypt:")
+    fileNameValidator(encrypted)
     altered_file=open(encrypted, "r")
     decrypted=input("Enter output file:")
     decrypted_file=open(decrypted,"w")
@@ -67,10 +69,24 @@ def decrypt():
     decrypted_file.close()
     return print("Decrypted passwords wrote to "+ decrypted)
 
+def fileNameValidator(input):
+    #checks reserved characters/strings for filenames in Window's operating systems
+    #arraySingleChecker=['^','/','|','?','<','>',':','"', '\\' ]
+    arrayReservedChecker=["CON"," PRN","AUX","NUL","COM","LPT"]
+    returnCondition = 0
+    if(input.isalnum()):
+       for x in arrayReservedChecker:
+           if (x==input):
+               returnCondition+=1
+               return 1
+    elif(returnCondition==0 and input.isalnum()):
+        return 0
+          
+          
 #Main Program
 #variables
 print("Welcome to the password encryption program!")
-user_input=input("Options:\n< e for encryption >\n< d for encryption >\n< q to exit>\nSelect an option:")
+user_input=input("Options:\n< e for encryption >\n< d for decryption >\n< q to exit>\nSelect an option:")
 
 #While Loop
 while (user_input!="q"):
