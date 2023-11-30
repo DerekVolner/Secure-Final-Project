@@ -32,3 +32,8 @@ class Test_TestMethods (unittest.TestCase):
         encryptedText ="decryptFile.txt"
         run = BaseFileModProject6.encrypt2(plainText, encryptedText)
         self.assertEqual(run, "Encrypted passwords wrote to "+ encryptedText)
+    def test_EncryptFileNotFound(self):
+        plainText = "89897e.txt"
+        encryptedText ="dededed.txt"
+        run = BaseFileModProject6.encrypt2(plainText, encryptedText)
+        self.assertEqual(run, "The text file you specified cannot be found")
