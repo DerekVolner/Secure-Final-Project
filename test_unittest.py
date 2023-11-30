@@ -23,3 +23,8 @@ class Test_TestMethods (unittest.TestCase):
         arrayDecrypted=[]
         BaseFileModProject6.process(encryptedArray,arrayDecrypted)
         self.assertEqual(arrayDecrypted,["y","z","\n", "y","y","y","\n", "z","t", "y" ] )
+    def test_processEmptyString(self):
+        emptyStringArray =['']
+        arrayDecrypted=[]
+        BaseFileModProject6.process(emptyStringArray,arrayDecrypted)
+        self.assertEqual(emptyStringArray, [''])
