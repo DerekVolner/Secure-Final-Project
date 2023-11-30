@@ -100,16 +100,16 @@ def decrypt():
         print("The file you specified cannot be found")
 
             
-#Main Program
-#variables
-print("Welcome to the password encryption program!")
-user_input=input("Options:\n< e for encryption >\n< d for decryption >\n< q to exit>\nSelect an option:")
-
-#While Loop
-while (user_input!="q"):
-    if (user_input=="e"):
-        encrypt()
-    if (user_input=="d"):
-        decrypt()
+def main():
+    print("Welcome to the password encryption program!")
     user_input=input("Options:\n< e for encryption >\n< d for decryption >\n< q to exit>\nSelect an option:")
-print("Thank you for using our program!")
+    #While Loop
+    while (user_input!="q"):
+        if (user_input=="e"):
+            encrypt()
+        if (user_input=="d"):
+            decrypt()
+        user_input=input("Options:\n< e for encryption >\n< d for decryption >\n< q to exit>\nSelect an option:")
+    print("Thank you for using our program!")
+if __name__ == "__main__":
+    main()
