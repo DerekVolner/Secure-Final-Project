@@ -18,10 +18,9 @@ with anyone under any circumstances. '''
 def encrypt():
     try:
         users_file=input("Enter file to encrypt:")
-        fileNameValidator(users_file)
         base_file=open(users_file, "r")
         users_file_encryption=input("Enter output file:")
-        fileNameValidator(users_file_encryption)
+       
         Encrypted_file=open(users_file_encryption,"w")
         read=[]
         rest=[]
@@ -46,10 +45,8 @@ def encrypt():
 def decrypt():
     try:
         encrypted=input("Enter file to decrypt:")
-        fileNameValidator(encrypted)
         altered_file=open(encrypted, "r")
         decrypted=input("Enter output file:")
-        fileNameValidator(decrypted)
         decrypted_file=open(decrypted,"w")
         encrypted_list=[]
         decryptinglist=[]
@@ -74,23 +71,12 @@ def decrypt():
         altered_file.close()
         decrypted_file.close()
         return print("Decrypted passwords wrote to "+ decrypted)
+    except(ValueError):
+        return "The values in the file have not been encrypted with this program"
     except(FileNotFoundError):
         print("The file you specified cannot be found")
 
-def fileNameValidator(input):
-    #checks reserved characters/strings for filenames in Window's operating systems
-    #arraySingleChecker=['^','/','|','?','<','>',':','"', '\\' ]
-    arrayReservedChecker=["CON"," PRN","AUX","NUL","COM","LPT"]
-    returnCondition = 0
-    if(input.isalnum()):
-       for x in arrayReservedChecker:
-           if (x==input):
-               returnCondition+=1
-               return False
-    elif(returnCondition==0 and input.isalnum()):
-        return True
-          
-          
+            
 #Main Program
 #variables
 print("Welcome to the password encryption program!")
@@ -102,5 +88,5 @@ while (user_input!="q"):
         encrypt()
     if (user_input=="d"):
         decrypt()
-    user_input=input("Options:\n< e for encryption >\n< d for encryption >\n< q to exit>\nSelect an option:")
+    user_input=input("Options:\n< e for encryption >\n< d for decryption >\n< q to exit>\nSelect an option:")
 print("Thank you for using our program!")
