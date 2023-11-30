@@ -32,26 +32,24 @@ def Converter(rest, read):
              rest.append(str((ord(x))-read.index(x))+"a"+".")
              read.remove(x)
              read.insert(0,'y')
-def encrypt():
+def encrypt2(plaintext, encrypted):
     try:
-        users_file=input("Enter file to encrypt:")
-        base_file=open(users_file, "r")
-        users_file_encryption=input("Enter output file:")
-        Encrypted_file=open(users_file_encryption,"w")
+        base_file=open(plaintext, "r",encoding="utf-8")
+        Encrypted_file=open(encrypted,"w",encoding="utf-8")
         read=[]
         rest=[]
+
         putter(base_file, read)
         Converter(rest, read)
-        
         #writes the contents of the rest list to the output file
         for y in rest:
-            Encrypted_file.write(y)
-        #closes both output and input files and returns a print statement of the str and the value the user inputted for users_file_encryption at the start 
+                Encrypted_file.write(y)
+            #closes both output and input files and returns a print statement of the str and the value the user inputted for users_file_encryption at the start 
         base_file.close()
         Encrypted_file.close()
-        return print("Encrypted passwords wrote to "+ users_file_encryption)
+        return "Encrypted passwords wrote to "+ encrypted
     except(FileNotFoundError):
-        print("The file you specified cannot be found")
+        return "The text file you specified cannot be found"
 #splits the encrypted file into single value strings
 def splitter(altered, eList):
     for letter in altered:
@@ -106,7 +104,9 @@ def main():
     #While Loop
     while (user_input!="q"):
         if (user_input=="e"):
-            encrypt()
+            users_file=input("Enter file to encrypt:")
+            users_file_encryption=input("Enter output file:")
+            print(encrypt2(users_file, users_file_encryption))
         if (user_input=="d"):
             decrypt()
         user_input=input("Options:\n< e for encryption >\n< d for decryption >\n< q to exit>\nSelect an option:")
