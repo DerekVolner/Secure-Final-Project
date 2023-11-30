@@ -13,3 +13,8 @@ class Test_TestMethods (unittest.TestCase):
         empty=[]
         BaseFileModProject6.Converter(empty,filledArray)
         self.assertEqual(empty,['122.','121a.','8.','99.','49.','5.','95.','3.','92.','88.','90.','95.'])
+    def test_splitter(self):
+        dottedArray = ["y.f.5.6.7.8.8.999.974.#.f"]
+        empty =[]
+        BaseFileModProject6.splitter(dottedArray, empty)
+        self.assertEqual(empty,["y","f","5","6","7","8","8","999","974","#","f"])
