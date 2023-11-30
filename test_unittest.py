@@ -1,7 +1,6 @@
 import unittest
 import BaseFileModProject6
 
-
 class Test_TestMethods (unittest.TestCase):
     def test_putter(self):
         testArray=["a","b","c"]
@@ -28,3 +27,8 @@ class Test_TestMethods (unittest.TestCase):
         arrayDecrypted=[]
         BaseFileModProject6.process(emptyStringArray,arrayDecrypted)
         self.assertEqual(emptyStringArray, [''])
+    def test_EncryptNormal(self):
+        plainText = "encryptFile.txt"
+        encryptedText ="decryptFile.txt"
+        run = BaseFileModProject6.encrypt2(plainText, encryptedText)
+        self.assertEqual(run, "Encrypted passwords wrote to "+ encryptedText)
