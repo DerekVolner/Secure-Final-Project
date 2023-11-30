@@ -47,3 +47,8 @@ class Test_TestMethods (unittest.TestCase):
         dString = "decryptFile.txt"
         run2 = BaseFileModProject6.decrypt2(nonExistentFile, dString)
         self.assertEqual(run2, "The text file you specified cannot be found")
+    def test_decryptValueError(self):
+        fileWithValueError = "valueError.txt"
+        dString = "decryptFile.txt"
+        run3 = BaseFileModProject6.decrypt2(fileWithValueError, dString)
+        self.assertEqual(run3, "The values in the file have not been encrypted with this program")
