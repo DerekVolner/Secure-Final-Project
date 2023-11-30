@@ -29,7 +29,7 @@ class Test_TestMethods (unittest.TestCase):
         self.assertEqual(emptyStringArray, [''])
     def test_EncryptNormal(self):
         plainText = "encryptFile.txt"
-        encryptedText ="encryptFile.txt"
+        encryptedText ="decryptFile.txt"
         run = BaseFileModProject6.encrypt2(plainText, encryptedText)
         self.assertEqual(run, "Encrypted passwords wrote to "+ encryptedText)
     def test_EncryptFileNotFound(self):
@@ -39,6 +39,11 @@ class Test_TestMethods (unittest.TestCase):
         self.assertEqual(run, "The text file you specified cannot be found")
     def test_decryptNormal(self):
         eString = "encryptFile.txt"
-        dString = "encryptFile.txt"
+        dString = "decryptFile.txt"
         run = BaseFileModProject6.decrypt2(dString, eString)
         self.assertEqual(run, "Decrypted passwords wrote to "+ eString)
+    def test_decryptFileNotFound(self):
+        nonExistentFile ="doobee.txt"
+        dString = "decryptFile.txt"
+        run2 = BaseFileModProject6.decrypt2(nonExistentFile, dString)
+        self.assertEqual(run2, "The text file you specified cannot be found")
