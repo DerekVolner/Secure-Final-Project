@@ -73,30 +73,25 @@ def process(eList, dList):
             dList.append(chr(((zy))+y))
             eList.remove(x)
             eList.insert(0,'y')
-def decrypt():
+def decrypt2(encrypted, decrypted):
     try:
-        encrypted=input("Enter file to decrypt:")
-        altered_file=open(encrypted, "r")
-        decrypted=input("Enter output file:")
-        decrypted_file=open(decrypted,"w")
-        encrypted_list=[]
-        decryptinglist=[]
-        splitter(altered_file, encryptedList)
+      altered_file=open(encrypted, "r",encoding="utf-8")
+      encryptedList =[]
+      decryptedList=[]
+      splitter(altered_file, encryptedList)
+      #above needed for splitter function
+      decrypted_file=open(decrypted,"w",encoding="utf-8")
+      process(encryptedList, decryptedList)
+      for character in decryptedList:
+        decrypted_file.write(character)
 
-        process(encryptedList, decryptedList)
-
-        #writes the decrypting list to the output file    
-        for character in decryptinglist:
-            decrypted_file.write(character)
-        #closes both output and input files and returns a print statement of the str and the value the user inputted for decrypted at the start of function
-        altered_file.close()
-        decrypted_file.close()
-        return print("Decrypted passwords wrote to "+ decrypted)
+      altered_file.close()
+      decrypted_file.close()
+      return "Decrypted passwords wrote to "+ decrypted
     except(ValueError):
         return "The values in the file have not been encrypted with this program"
     except(FileNotFoundError):
-        print("The file you specified cannot be found")
-
+        return "The text file you specified cannot be found"
             
 def main():
     print("Welcome to the password encryption program!")
@@ -108,8 +103,11 @@ def main():
             users_file_encryption=input("Enter output file:")
             print(encrypt2(users_file, users_file_encryption))
         if (user_input=="d"):
-            decrypt()
+            encrypted=input("Enter file to decrypt:")
+            decrypted=input("Enter output file:")
+            print(decrypt2(encrypted, decrypted))
         user_input=input("Options:\n< e for encryption >\n< d for decryption >\n< q to exit>\nSelect an option:")
     print("Thank you for using our program!")
+    
 if __name__ == "__main__":
     main()
