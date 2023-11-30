@@ -15,23 +15,33 @@ I have not given my code to any other student and will not share this code
 
 with anyone under any circumstances. '''
 #Functions
+#puts the characters of base_file into a singular list
+def putter(base, read):
+    for letter in base:
+        read+=list(letter)  
+"""Converter appends the string value of the character to rest list after it's ascii value 
+ is subtracted from it's index value in the read list"""
+ 
+def Converter(rest, read):
+    for x in read:
+        if(x!="y"):
+            rest.append(str((ord(x))-read.index(x))+".") 
+            read.remove(x)
+            read.insert(0,'y') 
+        elif (x=="y"):
+             rest.append(str((ord(x))-read.index(x))+"a"+".")
+             read.remove(x)
+             read.insert(0,'y')
 def encrypt():
     try:
         users_file=input("Enter file to encrypt:")
         base_file=open(users_file, "r")
         users_file_encryption=input("Enter output file:")
-       
         Encrypted_file=open(users_file_encryption,"w")
         read=[]
         rest=[]
-        #puts the characters of base_file into a singular list
-        for letter in base_file:
-            read+=list(letter)
-        #appends the string value of the character to rest list after it's ascii value is subtracted from it's index value in the read list
-        for x in read:
-            rest.append(str((ord(x))-read.index(x))+".") 
-            read.remove(x)
-            read.insert(0,'y')
+        putter(base_file, read)
+        Converter(rest, read)
         #writes the contents of the rest list to the output file
         for y in rest:
             Encrypted_file.write(y)
