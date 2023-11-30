@@ -42,6 +42,7 @@ def encrypt():
         rest=[]
         putter(base_file, read)
         Converter(rest, read)
+        
         #writes the contents of the rest list to the output file
         for y in rest:
             Encrypted_file.write(y)
@@ -51,7 +52,29 @@ def encrypt():
         return print("Encrypted passwords wrote to "+ users_file_encryption)
     except(FileNotFoundError):
         print("The file you specified cannot be found")
-
+#splits the encrypted file into single value strings
+def splitter(altered, eList):
+    for letter in altered:
+         m=letter.split(".")
+         eList+=m
+#Takes the value of x and adds its index back to the value to return the character, 
+# then removes and replaces the index position with str (y)
+#and continues when x reaches ''    
+def process(eList, dList):
+      for x in eList:
+        y=eList.index(x)
+        if (x==''):
+            continue
+        if(x=="121a"):
+            z=int (121)
+            dList.append(chr(z))
+            eList.remove(x)
+            eList.insert(0,'y')
+        elif(x!="121a"):
+            zy=int(x)
+            dList.append(chr(((zy))+y))
+            eList.remove(x)
+            eList.insert(0,'y')
 def decrypt():
     try:
         encrypted=input("Enter file to decrypt:")
@@ -60,20 +83,10 @@ def decrypt():
         decrypted_file=open(decrypted,"w")
         encrypted_list=[]
         decryptinglist=[]
-        #splits the encrypted file into single value strings
-        for letter in altered_file:
-            m=letter.split(".")
-            encrypted_list+=m
-        #Takes the value of x and adds its index back to the value to return the character, then removes and replaces the index position with str (y)
-        #and continues when x reaches ''    
-        for x in encrypted_list:
-            y=encrypted_list.index(x)
-            if (x==''):
-                continue
-            z=int(x)
-            decryptinglist.append(chr(((z))+y))
-            encrypted_list.remove(x)
-            encrypted_list.insert(0,'y')
+        splitter(altered_file, encryptedList)
+
+        process(encryptedList, decryptedList)
+
         #writes the decrypting list to the output file    
         for character in decryptinglist:
             decrypted_file.write(character)
