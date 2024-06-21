@@ -7,3 +7,4 @@ I achieved this by:
  - Refactored code so it was in smaller chunks of code to allow for proper testing
    - for example turned the encrypt function into two functions putter and converter.
    -  This allowed me to check if the file was placing the characters as expected with putter fuction then check the conversion with the converter function.
+ - Added Try and Catch Statements to account for availability, and partly integrity as per the C.I.A. triad standard
