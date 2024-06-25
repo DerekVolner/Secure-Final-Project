@@ -7,13 +7,9 @@ Description: project for adding security measures to basic encryption and decryp
 
 Due: 12/1/2023
 
-I pledge that I have completed the programming assignment independently.
+Update: This program is able to be shared with potential employers after checking with the CS department.
+'''
 
-I have not copied the code from a student or any source.
-
-I have not given my code to any other student and will not share this code
-
-with anyone under any circumstances. '''
 #Functions
 #puts the characters of base_file into a singular list
 def putter(base, read):
